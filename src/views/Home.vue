@@ -41,14 +41,14 @@ export default {
   },
   watch: {
     userNum() {
-      if (! this.userNum) {
+      if (!this.userNum) {
         this.sendFlag = false;
         return;
-      };
+      }
       if (this.userNum.length > 4) {
         this.userNum = this.userNum.slice(0, -1);
       }
-      if (! this.checkNumber(this.userNum)) {
+      if (!this.checkNumber(this.userNum)) {
         this.gameInfo.errorMessage = "半角英数を入力してください。";
         this.sendFlag = false;
         return;
@@ -63,18 +63,16 @@ export default {
       return;
     }
   },
-  computed: {
-  },
+  computed: {},
   methods: {
     initGame() {
       this.gameCount.game = 0;
       this.gameCount.hit = 0;
       this.gameCount.blow = 0;
       this.gameInfo.errorMessage = "";
-      this.userNum = '',
-      this.makeAnswer();
+      (this.userNum = ""), this.makeAnswer();
     },
-    randomNum(minNum , maxNum) {
+    randomNum(minNum, maxNum) {
       return Math.floor(Math.random() * (maxNum + 1 - minNum)) + minNum;
     },
     strDel(str, index) {
@@ -91,7 +89,7 @@ export default {
       this.answer = str;
     },
     btnAnswer() {
-      if (! this.sendFlag) return;
+      if (!this.sendFlag) return;
       let hit = this.userNum === this.answer;
       if (hit) {
         this.gameCount.hit++;
@@ -103,7 +101,7 @@ export default {
     checkDuplicate(num) {
       let str = num;
       str = Array.from(str);
-      let check = str.filter(function (x, i, self) {
+      let check = str.filter(function(x, i, self) {
         return self.indexOf(x) === i && i !== self.lastIndexOf(x);
       });
       if (check.length) return true;
