@@ -10,7 +10,12 @@
     </div>
     <div class="btnWap">
       <a class="btn" v-on:click="initGame()">はじめから</a>
-      <a class="btn btn--answer" v-on:click="btnAnswer" v-bind:class="{ 'btn--stop' : ! sendFlag }">回答</a>
+      <a
+        class="btn btn--answer"
+        v-on:click="btnAnswer"
+        v-bind:class="{ 'btn--stop': !sendFlag }"
+        >回答</a
+      >
     </div>
   </div>
 </template>
