@@ -4,13 +4,13 @@
     <input type="text" class="userNum" v-model="userNum" placeholder="1234" />
     <p class="errorMessage">{{ gameInfo.errorMessage }}</p>
     <div class="gameInfo">
-      <p>ゲーム回数：{{ gameCount.game }}回</p>
-      <p>ヒット回数：{{ gameCount.hit }}回</p>
-      <p>ブロー回数：{{ gameCount.blow }}回</p>
+      <p>ゲーム数：{{ gameCount.game }}回</p>
+      <p>ヒット数：{{ gameCount.hit }}回</p>
+      <p>ブロー数：{{ gameCount.blow }}回</p>
     </div>
     <div class="btnWap">
-      <a class="btn" v-on:click="initGame()">クリア</a>
-      <a class="btn" v-on:click="btnAnswer">回答</a>
+      <a class="btn" v-on:click="initGame()">はじめから</a>
+      <a class="btn btn--answer" v-on:click="btnAnswer" v-bind:class="{ 'btn--stop' : ! sendFlag }">回答</a>
     </div>
   </div>
 </template>
@@ -22,7 +22,7 @@
 export default {
   name: "home",
   mounted: function() {
-    // this.initGame();
+    this.initGame();
   },
   data() {
     return {
@@ -59,7 +59,7 @@ export default {
         return;
       }
       this.gameInfo.errorMessage = "";
-      this.sendFlag = true;
+      if (this.userNum.length == 4) this.sendFlag = true;
       return;
     }
   },
@@ -93,6 +93,7 @@ export default {
       let hit = this.userNum === this.answer;
       if (hit) {
         this.gameCount.hit++;
+        this.makeAnswer();
       } else {
         this.gameCount.blow++;
       }

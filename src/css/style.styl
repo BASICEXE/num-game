@@ -4,6 +4,7 @@ html
   max-width: 900px
   margin: auto
   text-align: center
+  padding: 1em
 .title
   color: #000
   margin-top: 3rem
@@ -15,18 +16,36 @@ html
   padding: 0.5em
   margin: 1em auto
   font-size: 2rem
+  text-align: center
 .errorMessage
   color: red
   margin-bottom: 1em
-  font-size: 1.4rem
+  font-size: 1.8rem
 .gameInfo
-  font-size: 1.6rem
+  font-size: 1.8rem
+  border-radius: 5px
+  border: solid 1px #aaa
+  padding: 1em 0
 .btnWap
   display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  margin: 1em
 .btn
   display: block
-  padding: 0.5em 0
-  width: 100%
-  border: solid 1px #333
-  margin: 1em auto
-  font-size: 1.4rem
+  padding: 0.8em 0
+  width: 48%
+  border: solid 1px #aaa
+  margin: 0.5em auto
+  font-size: 1.8rem
+  border-radius: 5px
+  color: #666
+  min-width: 200px
+  &--answer
+    background-color: #3cb371
+    border-color: #3cb371
+    color: #fff
+  &--stop
+    border-color: #aaa
+    background-color: #aaa
+    color: #fff
