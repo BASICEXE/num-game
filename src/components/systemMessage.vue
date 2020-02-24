@@ -1,5 +1,8 @@
 <template>
-  <div class="hello" v-if="isSystemMessage($store.getters.systemMessage)">
+  <div
+    class="systemMessage"
+    v-if="isSystemMessage($store.getters.systemMessage)"
+  >
     <h1>{{ $store.getters.systemMessage }}</h1>
   </div>
 </template>
@@ -11,7 +14,7 @@ export default {
     isSystemMessage(message) {
       if (message.length) return true;
       return false;
-    },
+    }
   }
 };
 </script>
