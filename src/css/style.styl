@@ -1,8 +1,11 @@
+*
+  box-sizing: border-box;
 html
-  font-size: 10px
+  font-size: 62.5%;
 #app
   background-image: url('../assets/main.jpg')
   background-size: cover;
+  background-position: center top;
   position: relative;
   height: 100vh;
   color: #fff;
@@ -10,7 +13,7 @@ html
   &:after
     content: '';
     display: block;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.75);
     position: absolute;
     top: 0;
     bottom: 0;
@@ -27,9 +30,11 @@ html
   border-radius: 5px
   padding: 0.5em 1em
   margin: 1em auto
-  font-size: 3rem
   text-align: center
   color: #fff;
+  font-size: 3rem
+  @media screen and (max-width: 767px)
+    font-size: 2rem
 .errorMessage
   color: #ff6b00
   margin-bottom: 1em
