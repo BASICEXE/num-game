@@ -3,7 +3,14 @@
     class="systemMessage"
     v-if="isSystemMessage($store.getters.systemMessage)"
   >
-    <h1>{{ $store.getters.systemMessage }}</h1>
+    <div class="systemMessage__inner">
+      <p class="systemMessage__message">
+        {{ $store.getters.systemMessage }}
+      </p>
+      <div class="btnWap">
+        <a class="btn" @click="close()">Close</a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -14,6 +21,9 @@ export default {
     isSystemMessage(message) {
       if (message.length) return true;
       return false;
+    },
+    close(){
+      this.$store.commit("systemMessage", "")
     }
   }
 };

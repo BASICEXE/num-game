@@ -1,35 +1,34 @@
 <template>
   <div class="home">
     <h1 class="title">数あてゲーム</h1>
-    <input type="text" class="userNum" v-model="userNum" placeholder="1234" />
-    <p class="errorMessage">{{ gameInfo.errorMessage }}</p>
     <div class="gameInfo">
-      <p>ゲーム数：{{ gameCount.game }}回</p>
-      <p>ヒット数：{{ gameCount.hit }}回</p>
-      <p>ブロー数：{{ gameCount.blow }}回</p>
+      <p class="gameInfo__text">4桁の数値を入力し、数を当ててください。</p>
+      <!-- <p>CLEAR回数：{{ gameCount.hit }}回</p> -->
+      <!-- <p>ゲーム回数：{{ gameCount.game }}回</p> -->
+      <p>トライ回数：{{ gameCount.blow }}回</p>
     </div>
+    <input type="text" ref="userNum" class="userNum" v-model="userNum" placeholder="1234" @keyup.enter="btnAnswer" />
+    <p class="errorMessage">{{ gameInfo.errorMessage }}</p>
     <div class="btnWap">
-      <a class="btn" v-on:click="initGame()">はじめから</a>
       <a
         class="btn btn--answer"
-        v-on:click="btnAnswer"
-        v-bind:class="{ 'btn--stop': !sendFlag }"
-        >回答</a
+        @click="btnAnswer"
+        :class="{ 'btn--stop': !sendFlag }"
+        >アンサー</a
       >
     </div>
-    <systemMessage />
+    <div class="btnWap">
+      <a class="btn" @click="initGame()">リスタート</a>
+    </div>
   </div>
 </template>
 
 <script>
-import systemMessage from "../components/systemMessage.vue";
 export default {
   name: "home",
-  components: {
-    systemMessage
-  },
   mounted: function() {
     this.initGame();
+    this.$refs.userNum.focus();
   },
   data() {
     return {
@@ -50,6 +49,7 @@ export default {
     userNum() {
       if (!this.userNum) {
         this.sendFlag = false;
+        this.gameInfo.errorMessage = "数値を入力してください。";
         return;
       }
       if (this.userNum.length > 4) {
@@ -103,6 +103,7 @@ export default {
         this.makeAnswer();
         this.$store.commit("systemMessage", "GAME CLEAR !!");
       } else {
+        this.gameInfo.errorMessage = "ハズレ...。";
         this.gameCount.blow++;
       }
       this.gameCount.game++;
