@@ -28,7 +28,6 @@ export default {
   name: "home",
   mounted: function() {
     this.initGame();
-    this.$refs.userNum.focus();
   },
   data() {
     return {
@@ -78,6 +77,7 @@ export default {
       this.gameInfo.errorMessage = "";
       this.$store.commit("systemMessage", "");
       (this.userNum = ""), this.makeAnswer();
+      this.$refs.userNum.focus();
     },
     randomNum(minNum, maxNum) {
       return Math.floor(Math.random() * (maxNum + 1 - minNum)) + minNum;
