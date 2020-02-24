@@ -17,15 +17,17 @@
         >回答</a
       >
     </div>
+    <systemMessage />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
-
+import systemMessage from "../components/systemMessage.vue";
 export default {
   name: "home",
+  components: {
+    systemMessage
+  },
   mounted: function() {
     this.initGame();
   },
@@ -68,13 +70,13 @@ export default {
       return;
     }
   },
-  computed: {},
   methods: {
     initGame() {
       this.gameCount.game = 0;
       this.gameCount.hit = 0;
       this.gameCount.blow = 0;
       this.gameInfo.errorMessage = "";
+      this.$store.commit("systemMessage", "");
       (this.userNum = ""), this.makeAnswer();
     },
     randomNum(minNum, maxNum) {
@@ -99,6 +101,7 @@ export default {
       if (hit) {
         this.gameCount.hit++;
         this.makeAnswer();
+        this.$store.commit("systemMessage", "GAME CLEAR !!");
       } else {
         this.gameCount.blow++;
       }
