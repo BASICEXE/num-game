@@ -22,8 +22,8 @@ export default {
       if (message.length) return true;
       return false;
     },
-    close(){
-      this.$store.commit("systemMessage", "")
+    close() {
+      this.$store.commit("systemMessage", "");
     }
   }
 };

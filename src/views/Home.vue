@@ -7,7 +7,14 @@
       <!-- <p>ゲーム回数：{{ gameCount.game }}回</p> -->
       <p>トライ回数：{{ gameCount.blow }}回</p>
     </div>
-    <input type="text" ref="userNum" class="userNum" v-model="userNum" placeholder="1234" @keyup.enter="btnAnswer" />
+    <input
+      type="text"
+      ref="userNum"
+      class="userNum"
+      v-model="userNum"
+      placeholder="1234"
+      @keyup.enter="btnAnswer"
+    />
     <p class="errorMessage">{{ gameInfo.errorMessage }}</p>
     <div class="btnWap">
       <a
