@@ -1,5 +1,5 @@
 
 module.exports = {
-  baseUrl: '/num-game/'
+  publicPath: './'
 }
 
