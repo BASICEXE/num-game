@@ -33,7 +33,7 @@
 <script>
 export default {
   name: "home",
-  mounted: function() {
+  mounted: function () {
     this.initGame();
   },
   data() {
@@ -44,11 +44,11 @@ export default {
       gameCount: {
         game: 0,
         hit: 0,
-        blow: 0
+        blow: 0,
       },
       gameInfo: {
-        errorMessage: ""
-      }
+        errorMessage: "",
+      },
     };
   },
   watch: {
@@ -74,7 +74,7 @@ export default {
       this.gameInfo.errorMessage = "";
       if (this.userNum.length == 4) this.sendFlag = true;
       return;
-    }
+    },
   },
   methods: {
     initGame() {
@@ -118,7 +118,7 @@ export default {
     checkDuplicate(num) {
       let str = num;
       str = Array.from(str);
-      let check = str.filter(function(x, i, self) {
+      let check = str.filter(function (x, i, self) {
         return self.indexOf(x) === i && i !== self.lastIndexOf(x);
       });
       if (check.length) return true;
@@ -128,7 +128,7 @@ export default {
       let match = isNaN(num);
       if (!match) return true;
       return false;
-    }
-  }
+    },
+  },
 };
 </script>

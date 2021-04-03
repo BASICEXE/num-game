@@ -24,7 +24,7 @@ export default {
     },
     close() {
       this.$store.commit("systemMessage", "");
-    }
-  }
+    },
+  },
 };
 </script>

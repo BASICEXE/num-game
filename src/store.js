@@ -5,17 +5,17 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    systemMessage: ""
+    systemMessage: "",
   },
   getters: {
-    systemMessage: state => {
+    systemMessage: (state) => {
       return state.systemMessage;
-    }
+    },
   },
   mutations: {
     systemMessage(state, message) {
       state.systemMessage = message;
-    }
+    },
   },
-  actions: {}
+  actions: {},
 });

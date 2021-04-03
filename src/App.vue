@@ -8,7 +8,7 @@
 import systemMessage from "./components/systemMessage.vue";
 export default {
   components: {
-    systemMessage
-  }
+    systemMessage,
+  },
 };
 </script>
